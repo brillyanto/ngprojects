@@ -115,6 +115,12 @@
           }
         }
       }
-    }},
-  "defaultProject": "ch1"
+    }
+  },
+  "defaultProject": "ch1",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }
