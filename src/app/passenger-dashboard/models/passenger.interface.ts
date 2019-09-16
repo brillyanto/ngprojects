@@ -11,3 +11,5 @@ export interface Passenger{
     checkedInDate: number
     children: Child[] | null
 }
+
+export type PassengerList = Passenger[];

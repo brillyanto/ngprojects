@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Passenger } from '../../models/passenger.interface';
 
 @Component({
@@ -6,6 +6,10 @@ import { Passenger } from '../../models/passenger.interface';
     styleUrls: ['passenger-dashboard.component.scss'],
     template: `
     <div>
+        <passenger-count
+        [items] = "passengers"
+        ></passenger-count>
+        <passenger-detail></passenger-detail>
         <h3>Airline Passengers</h3>
         <ul>
             <li *ngFor="let passenger of passengers; let i=index">
@@ -20,71 +24,75 @@ import { Passenger } from '../../models/passenger.interface';
     `
 })
 
-export class PassengerDashboardComponent{
-    passengers: Passenger[] = [
-        {
-          id: 0,
-          fullname: 'John',
-          checkedIn: false,
-          checkedInDate: null,
-          children: [
-            { name: 'child1', gender: 'Male', age: 4 },
-            { name: 'child2', gender: 'Fale', age: 2 },
-          ]
-        },
-        {
-          id: 1,
-          fullname: 'Tom',
-          checkedIn: true,
-          checkedInDate: 1490742000000,
-          children: [
-            { name: 'child1', gender: 'Male', age: 4 },
-            { name: 'child2', gender: 'Fale', age: 2 },
-          ]
-        },
-        {
-          id: 2,
-          fullname: 'Pradeep',
-          checkedIn: false,
-          checkedInDate: 1491606000000,
-          children: [
-            { name: 'child1', gender: 'Male', age: 4 },
-            { name: 'child2', gender: 'Fale', age: 2 },
-          ]
-        },
-        {
-          id: 3,
-          fullname: 'Suman',
-          checkedIn: true,
-          checkedInDate: 14884128000000,
-          children: null
-        },
-        {
-          id: 4,
-          fullname: 'Sathish',
-          checkedIn: false,
-          checkedInDate: null,
-          children: null
-        },
-        {
-          id: 6,
-          fullname: 'Mike',
-          checkedIn: false,
-          checkedInDate: 1491606000000,
-          children: [
-            { name: 'child1', gender: 'Male', age: 4 },
-            { name: 'child2', gender: 'Fale', age: 2 },
-          ]
-        },
-        {
-          id: 7,
-          fullname: 'Dick',
-          checkedIn: false,
-          checkedInDate: 14884128000000,
-          children: [
-            { name: 'child1', gender: 'Male', age: 4 },
-            { name: 'child2', gender: 'Fale', age: 2 },
-          ]
-        },
-      ]
+export class PassengerDashboardComponent implements OnInit{
+    passengers: Passenger[];
+      ngOnInit(){
+        console.log('OnInit');
+        this.passengers =  [
+          {
+            id: 0,
+            fullname: 'John',
+            checkedIn: false,
+            checkedInDate: null,
+            children: [
+              { name: 'child1', gender: 'Male', age: 4 },
+              { name: 'child2', gender: 'Fale', age: 2 },
+            ]
+          },
+          {
+            id: 1,
+            fullname: 'Tom',
+            checkedIn: true,
+            checkedInDate: 1490742000000,
+            children: [
+              { name: 'child1', gender: 'Male', age: 4 },
+              { name: 'child2', gender: 'Fale', age: 2 },
+            ]
+          },
+          {
+            id: 2,
+            fullname: 'Pradeep',
+            checkedIn: false,
+            checkedInDate: 1491606000000,
+            children: [
+              { name: 'child1', gender: 'Male', age: 4 },
+              { name: 'child2', gender: 'Fale', age: 2 },
+            ]
+          },
+          {
+            id: 3,
+            fullname: 'Suman',
+            checkedIn: true,
+            checkedInDate: 14884128000000,
+            children: null
+          },
+          {
+            id: 4,
+            fullname: 'Sathish',
+            checkedIn: false,
+            checkedInDate: null,
+            children: null
+          },
+          {
+            id: 6,
+            fullname: 'Mike',
+            checkedIn: false,
+            checkedInDate: 1491606000000,
+            children: [
+              { name: 'child1', gender: 'Male', age: 4 },
+              { name: 'child2', gender: 'Fale', age: 2 },
+            ]
+          },
+          {
+            id: 7,
+            fullname: 'Dick',
+            checkedIn: false,
+            checkedInDate: 14884128000000,
+            children: [
+              { name: 'child1', gender: 'Male', age: 4 },
+              { name: 'child2', gender: 'Fale', age: 2 },
+            ]
+          },
+        ];
+      }
 }
