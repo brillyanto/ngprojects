@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Passenger } from '../models/passenger.interface';
 
 @Component({
     selector: 'passenger-detail',
     template: `
-    <div>Passenger Detail</div>
-    `
+    <div>
+        <span 
+        class="status"
+            [ngStyle] = "{'backgroundColor': detail.checkedIn ? 'green' : 'red'}"
+        ></span>{{ detail.checkedIn ? (detail.checkedInDate | date: 'MMMM d, y') : 'Not Checked In' }}
+        Children: {{ detail.children?.length || 0 }}    
+    </div>
+    `,
+    styleUrls: ['passenger-component.scss']
 })
 
 export class PassengerDetailComponent {
-    constructor(){}
+    @Input()
+    detail: Passenger;
 }
