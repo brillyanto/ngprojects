@@ -8,8 +8,6 @@ export interface Passenger{
     id: number,
     fullname: string,
     checkedIn: boolean,
-    checkedInDate: number
+    checkedInDate: number,
     children: Child[] | null
 }
-
-export type PassengerList = Passenger[];
