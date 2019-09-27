@@ -30,18 +30,26 @@ export class PassengerDashboardComponent implements OnInit{
 
     ngOnInit(){
       this._passengerService.getPassenger()
-      .subscribe( (data) => { return this.passengers = data; } ),
-      error => console.log(error);
+      .subscribe( (data: Passenger[]) => { return this.passengers = data; } ,
+      error => console.log(error));
     }
 
-    removeItem(item){
-      this.passengers = this.passengers.filter( (passenger) => passenger.id != item.id );
-    }
-
-    handleEdit(item){
-      this.passengers.map( (passenger) => { 
-        if(item.id == passenger.id) Object.assign(passenger, item);
+    removeItem(item: Passenger){
+      this._passengerService.removePassenger(item)
+      .subscribe((data:Passenger) => {
+        this.passengers = this.passengers.filter( (passenger) => passenger.id != item.id );
       } );
+    }
+
+    handleEdit(item: Passenger){
+
+      this._passengerService.updatePassenger(item)
+      .subscribe( (data: Passenger) => {
+        this.passengers.map( (passenger) => { 
+          if(item.id == passenger.id) Object.assign(passenger, item);
+        } );
+      })
+      
     }
 
 }
