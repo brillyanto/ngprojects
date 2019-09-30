@@ -1,1 +1,13 @@
 <p>{{ detail | json }}</p>
+<form #form="ngForm" novalidate>
+    <div>
+        <label>Fullname
+            <input  type="text" 
+                    name="fullname" 
+                    [ngModel]="detail?.fullname" >
+        </label>
+        <p>
+            {{ form.value | json }}
+        </p>
+    </div>
+</form>
