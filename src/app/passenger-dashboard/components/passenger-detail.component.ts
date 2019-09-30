@@ -13,7 +13,6 @@ import { Passenger } from '../models/passenger.interface';
         class="status"
             [ngStyle] = "{'backgroundColor': detail.checkedIn ? 'green' : 'red'}"
         ></span>{{ detail.checkedIn ? (detail.checkedInDate | date: 'MMMM d, y') : 'Not Checked In' }}
-        Children: {{ detail.children?.length || 0 }}
         <button (click)="toggleEdit()">{{ (!editing) ? 'Edit' : 'Done' }}</button><button (click)="removeMe()">Remove</button>
     </div>
     `,

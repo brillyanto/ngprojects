@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { PassengerDashboardService } from '../../passenger-dashboard.service';
-import { Passenger } from '../../models/passenger.interface';
-
+import { Component, OnInit } from '@angular/core'
+import { PassengerDashboardService } from '../../passenger-dashboard.service'
+import { Passenger } from '../../models/passenger.interface'
+import { PassengerFormComponent} from '../../components/passenger-form/passenger-form.component'
 
 @Component({
     selector: 'passenger-viewer',
     styleUrls: ['./passenger-view.component.scss'],
     template: `<div>    
-            {{passenger | json }}
+            <passenger-form [detail]="passenger"></passenger-form>
         </div>`
 })
 

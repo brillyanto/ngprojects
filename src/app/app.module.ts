@@ -4,11 +4,12 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 
-import {PassengerDashboardModule} from './passenger-dashboard/passenger-dashboard.module'
+import {PassengerDashboardModule} from './passenger-dashboard/passenger-dashboard.module';
+
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     // Angular Modules
