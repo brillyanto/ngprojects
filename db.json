@@ -2,7 +2,7 @@
   "passengers": [
     {
       "id": 0,
-      "fullname": "John1",
+      "fullname": "John2",
       "checkedIn": false,
       "checkedInDate": null,
       "baggage": "none"

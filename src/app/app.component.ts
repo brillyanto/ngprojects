@@ -19,6 +19,10 @@ export class AppComponent {
       title: 'Home',
       exact: true
     },{
+      url: '/passengers',
+      title: 'Passengers',
+      exact: false
+    },{
       url: '/opps',
       title: '404',
       exact: false
