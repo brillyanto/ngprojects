@@ -1,0 +1,9 @@
+a{
+    margin:10px;
+    padding:10px;
+    text-decoration: none;
+    color:deepskyblue;
+    &.active{
+        color:purple;
+    }
+}

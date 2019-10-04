@@ -1,13 +1,43 @@
 <p>{{ detail | json }}</p>
-<form #form="ngForm" novalidate>
+<form #form="ngForm" (ngSubmit)="handleSubmit(form.value, detail?.id, form.valid)"  novalidate>
+
     <div>
         <label>Fullname
             <input  type="text" 
+                    #fullname="ngModel"
                     name="fullname" 
+                    required
                     [ngModel]="detail?.fullname" >
         </label>
-        <p>
-            {{ form.value | json }}
-        </p>
+        <div *ngIf="fullname.errors?.required" class="error">Fullname is required</div>
     </div>
+
+    <div>
+        Checked In
+        <span>
+            <label>
+                <input type="radio" [value]="true" name="checkedIn" [ngModel]="detail?.checkedIn" (ngModelChange)="toggleCheckedIn($event)">
+                Yes
+            </label>
+        </span>
+
+        <span>
+            <label>
+                <input type="radio" [value]="false" name="checkedIn" [ngModel]="detail?.checkedIn" (ngModelChange)="toggleCheckedIn($event)">
+                No
+            </label>
+        </span>
+    </div>
+
+    <div *ngIf="form.value.checkedIn"><label>Checked In Date<input type="text" name="checkedInDate" [ngModel]="detail?.checkedInDate"></label></div>
+
+    <div>
+        Luggage:
+        <select name="baggage" [ngModel]="detail?.baggage">
+            <option *ngFor="let b of baggage" [selected]="b.key === detail?.baggage" [ngValue]="b.key">{{b.value}}</option>
+        </select>
+    </div>
+
+    <button type="submit" [disabled]="form.invalid">Update</button>
+
 </form>

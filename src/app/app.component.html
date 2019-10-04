@@ -1,1 +1,11 @@
-<passenger-viewer></passenger-viewer>
+<div class="app">
+
+    <nav>
+        <a *ngFor="let item of nav" [routerLink]="item.url" routerLinkActive="active"
+        [routerLinkActiveOptions]="{exact: item.exact}" >{{item.title}}</a>
+    </nav>
+
+    <!-- <a routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+    <a routerLink="/oops" routerLinkActive="active">Not Found</a> -->
+    <router-outlet></router-outlet>
+</div>
