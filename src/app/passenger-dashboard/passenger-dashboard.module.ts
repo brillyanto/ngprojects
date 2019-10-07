@@ -16,8 +16,21 @@ import { PassengerFormComponent } from './components/passenger-form/passenger-fo
 // service
 import { PassengerDashboardService } from './passenger-dashboard.service'
 
-
-const routes = [{ path: 'passengers', component: PassengerDashboardComponent }]
+const routes = [
+    { 
+        path: 'passengers', 
+        children:[
+            {
+                path:'',
+                component: PassengerDashboardComponent
+            },
+            {
+                path:':id',
+                component: PassengerViewerComponent
+            },
+        ]
+    }
+]
 
 @NgModule({
     declarations:[
@@ -39,5 +52,5 @@ const routes = [{ path: 'passengers', component: PassengerDashboardComponent }]
 })
 
 export class PassengerDashboardModule{
-        
+    
 }
