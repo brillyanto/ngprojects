@@ -15,8 +15,10 @@ const httpOptions = {
 
 @Injectable()
 export class PassengerDashboardService {
+
     constructor(private http: HttpClient){
     }
+    
     getPassenger(): Observable<Passenger[]>{
       return this.http
       .get<Passenger[]>(PASSENGERS_API);
@@ -26,7 +28,6 @@ export class PassengerDashboardService {
       return this.http
       .get<Passenger>(`${PASSENGERS_API}/${id}`);
     }
-
 
     updatePassenger(passenger: Passenger): Observable<Passenger>{
       return this.http
