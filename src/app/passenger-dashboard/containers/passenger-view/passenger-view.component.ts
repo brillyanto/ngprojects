@@ -10,6 +10,7 @@ import { PassengerFormComponent} from '../../components/passenger-form/passenger
     styleUrls: ['./passenger-view.component.scss'],
     template: 
     `<div>    
+        <button (click)="goBack()">&lsaquo; Go Back</button>
         <passenger-form 
             [detail]="passenger" 
             (update)="updateDetail($event)">
@@ -19,7 +20,8 @@ import { PassengerFormComponent} from '../../components/passenger-form/passenger
 
 export class PassengerViewerComponent implements OnInit{
     private passenger: Passenger;
-    constructor( private route: ActivatedRoute, 
+    constructor( 
+        private route: ActivatedRoute, 
         private router: Router, 
         private _passengerService: PassengerDashboardService
     ){}
@@ -47,4 +49,9 @@ export class PassengerViewerComponent implements OnInit{
             (data) => this.passenger = Object.assign({}, p, data)
         )
     }
+
+    goBack(){
+        this.router.navigate(['/passengers'])
+    }
+
 }

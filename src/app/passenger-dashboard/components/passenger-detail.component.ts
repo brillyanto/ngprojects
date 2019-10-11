@@ -13,7 +13,9 @@ import { Passenger } from '../models/passenger.interface';
         class="status"
             [ngStyle] = "{'backgroundColor': detail.checkedIn ? 'green' : 'red'}"
         ></span>{{ detail.checkedIn ? (detail.checkedInDate | date: 'MMMM d, y') : 'Not Checked In' }}
-        <button (click)="toggleEdit()">{{ (!editing) ? 'Edit' : 'Done' }}</button><button (click)="removeMe()">Remove</button>
+        <button (click)="toggleEdit()">{{ (!editing) ? 'Edit' : 'Done' }}</button>
+        <button (click)="removeMe()">Remove</button>
+        <button (click)="viewHandle()">View</button>
     </div>
     `,
     styleUrls: ['passenger-component.scss']
@@ -22,10 +24,13 @@ import { Passenger } from '../models/passenger.interface';
 export class PassengerDetailComponent implements OnChanges {
 
     @Output()
-    remove: EventEmitter<any> = new EventEmitter();
+    remove: EventEmitter<Passenger> = new EventEmitter<Passenger>();
 
     @Output()
-    edit: EventEmitter<any> = new EventEmitter();
+    edit: EventEmitter<Passenger> = new EventEmitter<Passenger>();
+
+    @Output()
+    view: EventEmitter<Passenger> = new EventEmitter<Passenger>();
 
     @Input()
     detail: Passenger;
@@ -51,6 +56,10 @@ export class PassengerDetailComponent implements OnChanges {
 
     removeMe(){
         this.remove.emit(this.detail);
+    }
+
+    viewHandle(){
+        this.view.emit(this.detail)
     }
 
 }
